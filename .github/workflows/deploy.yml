@@ -1,0 +1,28 @@
+# on create new release, push force to prod branch
+
+
+name: push to prod
+on:
+  release:
+    types: 
+      - created
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Latest release tag
+        id: get-latest-release
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: doooss/next-template-tailwindcss
+          excludes: prerelease, draft
+          
+      - uses: actions/checkout@v3
+        with:
+          ref: prod
+          fetch-depth: 0
+
+      - run : git reset --hard ${{ steps.get-latest-release.outputs.release }}
+      - run : git push -f 
+          
