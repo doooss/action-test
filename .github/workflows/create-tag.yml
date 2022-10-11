@@ -3,7 +3,7 @@
 name: echo branch name
 on: 
   pull_request:
-    on: 
+    branches: 
       - master
     types: 
       - closed
@@ -14,24 +14,21 @@ jobs:
     steps:
       - name : 'Get Previous tag'
         id : previoustag
-        uses : "WyriHaximus/github-action-get-previous-tag@v1"
+        uses : WyriHaximus/github-action-get-previous-tag@v1
         with:
           fallback: "0.0.0"
-        env: 
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
+        
       - name: 'Get next minor version'
         id: semvers
-        uses: "WyriHaximus/github-action-next-semvers@v1"
+        uses: WyriHaximus/github-action-next-semvers@v1
         with:
           version: ${{ steps.previoustag.outputs.tag }}
           type: "minor"
         
       - name: 'Create release'
-        uses: "WyriHaximus/github-action-create-release@v1"
+        uses: WyriHaximus/github-action-create-release@v1
         with:
           tag: ${{ steps.semvers.outputs.minor }}
           name: ${{ steps.semvers.outputs.minor }}
           body: "release ${{ steps.semvers.outputs.minor }}"
-        env: 
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        
