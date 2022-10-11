@@ -3,10 +3,8 @@
 
 name: push to prod
 on:
-  push:
   release:
-    types: 
-      - [published]
+    types: [published]
 jobs:
   push:
     runs-on: ubuntu-latest
