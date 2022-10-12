@@ -10,8 +10,15 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
-  - title: 'Etcetera'
-    label: 'documentation'
+  - title: 'Refactoring'
+    labels:
+      - 'refactor'
+      - 'refactoring'
+  - title: 'test'
+    labels:
+      - 'test'
+      - 'testing'
+
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 change-title-escapes: '\<*_&' 
 version-resolver:
