@@ -4,8 +4,7 @@
 name: push to prod
 on:
   release:
-    types: 
-      - created
+    types: [published]
 jobs:
   push:
     runs-on: ubuntu-latest
@@ -15,7 +14,7 @@ jobs:
         id: get-latest-release
         uses: pozetroninc/github-action-get-latest-release@master
         with:
-          repository: doooss/next-template-tailwindcss
+          repository: doooss/action-test
           excludes: prerelease, draft
           
       - uses: actions/checkout@v3
