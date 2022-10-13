@@ -18,10 +18,9 @@ categories:
     labels:
       - 'test'
       - 'testing'
-
+exclude-labels: 'deploy'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 change-title-escapes: '\<*_&' 
-filter-by-commitish: develop
 version-resolver:
   major:
     labels:
