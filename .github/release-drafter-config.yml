@@ -18,7 +18,9 @@ categories:
     labels:
       - 'test'
       - 'testing'
-exclude-labels: 'deploy'
+exclude-labels: 
+  - 'deploy'
+  - 'exclude'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 change-title-escapes: '\<*_&' 
 version-resolver:
